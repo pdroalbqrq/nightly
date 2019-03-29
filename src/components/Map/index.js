@@ -132,8 +132,9 @@ export default class Map extends Component {
                         const place = (e.nativeEvent.contentOffset.x > 0)
                             ? Math.round(e.nativeEvent.contentOffset.x / Dimensions.get('window').width)
                             : 0;
-
                         const { latitude, longitude, mark } = this.state.places[place];
+
+                        
 
                         this.mapView.animateToRegion({
                             latitude,
