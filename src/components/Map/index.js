@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Dimensions, ScrollView, Image } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { white } from 'ansi-colors';
-var customMapStyle = require('../../json/mapstyle.json');
+var customMapStyle = require('../../json/mapstyle2.json');
 
 const { height, width } = Dimensions.get('window');
 
 export default class Map extends Component {
+
     state = {
         region: null,
-
         places: [
             {
                 id: 1,
@@ -105,12 +105,14 @@ export default class Map extends Component {
                     showsUserLocation={true}
                     loadingEnabled={true}
                     customMapStyle={customMapStyle}
-
+                    ref={el => this.mapView = el}
 
                 >
                     {this.state.places.map(place => (
                         <Marker
                             key={place.id}
+                            title={place.title}
+                            ref={mark => place.mark = mark}
                             coordinate={{
                                 latitude: place.latitude,
                                 longitude: place.longitude
@@ -124,55 +126,58 @@ export default class Map extends Component {
                     horizontal
                     showsHorizontalScrollIndicator={false}
                     pagingEnabled
-                /*    onMomentumScrollEnd={e => {
+                    onMomentumScrollEnd={e => {
                         const scrolled = e.nativeEvent.contentOffset.x;
-                        const place = (scrolled > 0)
-                            ? scrolled / Dimensions.get('window').width
 
+                        const place = (e.nativeEvent.contentOffset.x > 0)
+                            ? Math.round(e.nativeEvent.contentOffset.x / Dimensions.get('window').width)
                             : 0;
 
-                         const { latitude, longitude } = this.state.places[place];
-                        this.mapView.animateToCoordinate({
+                        const { latitude, longitude, mark } = this.state.places[place];
+
+                        this.mapView.animateToRegion({
                             latitude,
                             longitude,
-                        });
+                            latitudeDelta: 0.0143,
+                            longitudeDelta: 0.0034
+                        }, 1000);
 
-                    }}  */
+                        setTimeout(() => {
+                            mark.showCallout();
+                        }, 1000)
 
 
-                //     this.mapView.animateToCoordinate({
-                //         latitude,
-                //         longitude
-                //     });
-                // }}
+
+                    }}
                 >
                     {this.state.places.map(place => (
                         <View key={place.id} style={styles.places}>
                             <View style={styles.placepic}>
                                 <Image
                                     source={{ uri: place.img }}
-                                    style={{ width: 110, height: 110, borderRadius: 3 }}
+                                    style={{
+                                        width: 80,
+                                        height: 80,
+                                        borderRadius: 3,
+                                        borderRadius: 4,
+                                        borderWidth: 1,
+                                        borderColor: '#fff',
+                                    }}
                                 />
                             </View>
                             <View style={styles.placesinfo}>
+                                <Text style={styles.ptitle}>{place.title}</Text>
                                 <ScrollView
-                                vertical
-                                showsVerticalScrollIndicator={true}
-                                pagingEnabled
+                                    vertical
+                                    showsVerticalScrollIndicator={true}
+                                    pagingEnabled
                                 >
-                                    <Text style={styles.ptitle}>{place.title}</Text>
-                                    <Text showsHorizontalScrollIndicator style={styles.pdescription}>{place.description}</Text>
+
+                                    {/* <Text showsHorizontalScrollIndicator style={styles.pdescription}>{place.description}</Text> */}
                                 </ScrollView>
-
-
-
-
                             </View>
-
                         </View>
                     ))}
-
-
                 </ScrollView>
             </View>);
 
@@ -200,16 +205,23 @@ const styles = StyleSheet.create({
 
     },
     places: {
-        width: width - 40,
-        maxHeight: 200,
-        backgroundColor: '#FFF',
-        marginHorizontal: 20,
-        marginBottom: 20,
-        flexDirection: 'row'
+        width: width - 10,
+        backgroundColor: '#3C024F',
+        marginHorizontal: 5,
+        marginBottom: 5,
+        borderRadius: 3,
+        borderRadius: 4,
+        borderWidth: 2,
+        borderColor: '#fff',
+        flexDirection: 'row',
+
+        borderRadius: 5,
+        bottom: 0,
+        alignSelf: 'flex-end'
     },
 
     placepic: {
-        margin: 20,
+        margin: 10,
 
     },
     placesinfo: {
@@ -221,14 +233,17 @@ const styles = StyleSheet.create({
     },
 
     ptitle: {
-        fontSize: 15,
-        alignItems: 'center'
+        fontSize: 25,
+        alignItems: 'center',
+        color: '#fff',
+        marginHorizontal: 2,
     },
 
     pdescription: {
         fontSize: 13,
         alignItems: 'center',
-        marginTop: 10,
+        color: '#fff',
+        marginRight: 10
     }
 
 
