@@ -2,11 +2,31 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Dimensions, ScrollView, Image } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { white } from 'ansi-colors';
+import {StackNavigator} from 'react-navigation';
+import Telabar from '../Bar/index';
 var customMapStyle = require('../../json/mapstyle2.json');
 
 const { height, width } = Dimensions.get('window');
 
-export default class Map extends Component {
+class Map extends Component {
+
+     teste
+
+    static navigationOptions = {
+        title: 'Home'
+    }
+
+    constructor(props){
+        super(props);
+        this.state; 
+
+        this.irBar = this.irBar.bind(this);
+    }
+
+
+    irBar(){
+        this.props.navigation.navigate('Bar', {nome: this.state.places[teste]} );
+    }
 
     state = {
         region: null,
@@ -124,6 +144,7 @@ export default class Map extends Component {
 
                     style={styles.placesContainer}
                     horizontal
+                    onTouchEnd={this.irBar}
                     showsHorizontalScrollIndicator={false}
                     pagingEnabled
                     onMomentumScrollEnd={e => {
@@ -133,6 +154,7 @@ export default class Map extends Component {
                             ? Math.round(e.nativeEvent.contentOffset.x / Dimensions.get('window').width)
                             : 0;
                         const { latitude, longitude, mark } = this.state.places[place];
+                        this.teste = this.state.places[place]
 
                         
 
@@ -252,3 +274,11 @@ const styles = StyleSheet.create({
 
 
 });
+
+const Navegador = StackNavigator({
+    Home: {screen: Map},
+    Bar: {screen: Telabar }
+    
+});
+
+export default Navegador;
