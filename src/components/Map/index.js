@@ -9,13 +9,6 @@ var customMapStyle = require('../../json/mapstyle2.json');
 const { height, width } = Dimensions.get('window');
 
 class Map extends Component {
-<<<<<<< HEAD
-    
-     teste
-=======
-
-    
->>>>>>> 18d72ad24add84a364b00f2a7e1965559b0334b7
 
     static navigationOptions = {
         title: 'Home'
@@ -23,26 +16,11 @@ class Map extends Component {
 
     constructor(props) {
         super(props);
-<<<<<<< HEAD
-        this.state;
-        
-        //this.irBar = this.irBar.bind(this);
-    }
 
-
-=======
-        this.teste
         this.state;
 
-        this.irBar = this.irBar.bind(this);
     }
 
-
-    irBar() {
-        this.props.navigation.navigate('Bar', { nome: this.props.key });
-    }
-
->>>>>>> 18d72ad24add84a364b00f2a7e1965559b0334b7
     state = {
         region: null,
         chave: null,
@@ -169,18 +147,6 @@ class Map extends Component {
                         const place = (e.nativeEvent.contentOffset.x > 0)
                             ? Math.round(e.nativeEvent.contentOffset.x / Dimensions.get('window').width)
                             : 0;
-<<<<<<< HEAD
-
-                            
-                        const { latitude, longitude, mark } = this.state.places[place];
-                        this.teste = place
-=======
-                        const { latitude, longitude, mark, id } = this.state.places[place];
-                        this.teste = this.state.places.bind(this)
-                     
-
->>>>>>> 18d72ad24add84a364b00f2a7e1965559b0334b7
-
 
                         this.mapView.animateToRegion({
                             latitude,
