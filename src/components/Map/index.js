@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Dimensions, ScrollView, Image } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { white } from 'ansi-colors';
-import {StackNavigator} from 'react-navigation';
+import { StackNavigator } from 'react-navigation';
 import Telabar from '../Bar/index';
 var customMapStyle = require('../../json/mapstyle2.json');
 
@@ -10,26 +10,28 @@ const { height, width } = Dimensions.get('window');
 
 class Map extends Component {
 
-     teste
+    
 
     static navigationOptions = {
         title: 'Home'
     }
 
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state; 
+        this.teste
+        this.state;
 
         this.irBar = this.irBar.bind(this);
     }
 
 
-    irBar(){
-        this.props.navigation.navigate('Bar', {nome: this.state.places[teste]} );
+    irBar() {
+        this.props.navigation.navigate('Bar', { nome: this.props.key });
     }
 
     state = {
         region: null,
+        chave: null,
         places: [
             {
                 id: 1,
@@ -153,14 +155,16 @@ class Map extends Component {
                         const place = (e.nativeEvent.contentOffset.x > 0)
                             ? Math.round(e.nativeEvent.contentOffset.x / Dimensions.get('window').width)
                             : 0;
-                        const { latitude, longitude, mark } = this.state.places[place];
-                        this.teste = this.state.places[place]
+                        const { latitude, longitude, mark, id } = this.state.places[place];
+                        this.teste = this.state.places.bind(this)
+                     
 
-                        
+
 
                         this.mapView.animateToRegion({
                             latitude,
                             longitude,
+                            id = key,
                             latitudeDelta: 0.0143,
                             longitudeDelta: 0.0034
                         }, 1000);
@@ -276,9 +280,9 @@ const styles = StyleSheet.create({
 });
 
 const Navegador = StackNavigator({
-    Home: {screen: Map},
-    Bar: {screen: Telabar }
-    
+    Home: { screen: Map },
+    Bar: { screen: Telabar }
+
 });
 
 export default Navegador;
