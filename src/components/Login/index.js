@@ -15,7 +15,9 @@ import LgImagem from '../../drawing/logo.png'
 
 
 const { width: WIDTH } = Dimensions.get('window')
+
 export class TelaLogin extends Component {
+  
   constructor(){
     super()
     this.state = {
@@ -34,10 +36,9 @@ export class TelaLogin extends Component {
   }
   render() {
     return (
-      <ImageBackground source={bgImagem} style={styles.backgrounContainer}>
+      <View style={styles.backgrounContainer}>
         <View style={styles.logoContainer}>
           <Image source={LgImagem} style={styles.logoimg} />
-          <Text style={styles.logoTxt}>Nigthly Bares</Text>
         </View>
 
         <View style={styles.inputcontainer}>
@@ -74,7 +75,7 @@ export class TelaLogin extends Component {
           </TouchableOpacity>
 
 
-      </ImageBackground>
+      </View>
     )
   }
 }
@@ -88,19 +89,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: null,
     height: null,
+    backgroundColor: '#d6d6d6'
   },
 
 
 
   logoContainer: {
     alignItems: 'center',
-    margin: 50,
     marginBottom: 50,
   },
 
   logoimg: {
     width: 120,
-    height: 120,
+    height: 150,
   },
 
   logoTxt: {
@@ -123,7 +124,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.35)',
     color: 'rgba(255,255,255,0.7)',
     marginHorizontal: 25,
-
+    borderWidth: 2,
+    borderColor: '#4B0082' ,
   },
 
   inputcontainer: {

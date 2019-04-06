@@ -1,7 +1,6 @@
 import React from 'react';
-import TelaLogin from "./components/Login";
-import map from './components/Map'
-
-const App = () => <TelaLogin />
+import Map from './components/Map'
+import TelaLogin from './components/Login';
+const App = () => <Map />
 
 export default App;
