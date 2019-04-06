@@ -6,7 +6,7 @@ class Telabar extends Component {
 
     
    static navigationOptions = ({navigation}) =>({
-       title: navigation.state.params.nome.title
+       title: navigation.state.params.title
    })
 
   render() {

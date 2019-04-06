@@ -9,7 +9,7 @@ var customMapStyle = require('../../json/mapstyle2.json');
 const { height, width } = Dimensions.get('window');
 
 class Map extends Component {
-
+    
      teste
 
     static navigationOptions = {
@@ -18,15 +18,11 @@ class Map extends Component {
 
     constructor(props){
         super(props);
-        this.state; 
-
-        this.irBar = this.irBar.bind(this);
+        this.state;
+        
+        //this.irBar = this.irBar.bind(this);
     }
 
-
-    irBar(){
-        this.props.navigation.navigate('Bar', {nome: this.state.places[teste]} );
-    }
 
     state = {
         region: null,
@@ -144,7 +140,7 @@ class Map extends Component {
 
                     style={styles.placesContainer}
                     horizontal
-                    onTouchEnd={this.irBar}
+                  
                     showsHorizontalScrollIndicator={false}
                     pagingEnabled
                     onMomentumScrollEnd={e => {
@@ -153,8 +149,10 @@ class Map extends Component {
                         const place = (e.nativeEvent.contentOffset.x > 0)
                             ? Math.round(e.nativeEvent.contentOffset.x / Dimensions.get('window').width)
                             : 0;
+
+                            
                         const { latitude, longitude, mark } = this.state.places[place];
-                        this.teste = this.state.places[place]
+                        this.teste = place
 
                         
 
@@ -174,7 +172,11 @@ class Map extends Component {
                     }}
                 >
                     {this.state.places.map(place => (
-                        <View key={place.id} style={styles.places}>
+                        <View key={place.id} style={styles.places} 
+                        onTouchEnd={(e)=>     this.props.navigation.navigate('Bar', { title: place.title } )
+                           
+                        }
+                        >
                             <View style={styles.placepic}>
                                 <Image
                                     source={{ uri: place.img }}
