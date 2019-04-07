@@ -15,18 +15,6 @@ console.disableYellowBox = true;
 class Map extends Component {
 
 
-    static navigationOptions = {
-        title: 'NightlyApp',
-        headerStyle: {
-            backgroundColor: '#3C024F',
-            borderBottomWidth: 1,
-            borderColor: '#fff',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-            fontWeight: 'bold',
-        }
-    }
 
     constructor(props) {
         super(props);
@@ -249,10 +237,4 @@ const styles = StyleSheet.create({
 
 });
 
-const Navegador = StackNavigator({
-    Home: { screen: Map },
-    Bar: { screen: Telabar }
-
-});
-
-export default Navegador;
+export default Map;

@@ -1,6 +1,21 @@
 import React from 'react';
-import Map from './components/Map'
-import TelaLogin from './components/Login';
-const App = () => <TelaLogin />
+import {
+    Plataform,
+} from 'react-native';
+import {StackNavigator} from 'react-navigation';
+import TelaLogin from '../src/components/Login/index'
+import Map from '../src/components/Map/index'
+import TelaBar from '../src/components/Bar/index'
+const Navegador = StackNavigator({
+    Login:{ 
+        screen: TelaLogin
+    },
+    Map:{ 
+        screen: Map    
+    },
 
-export default App;
+});
+
+
+export default Navegador;
+

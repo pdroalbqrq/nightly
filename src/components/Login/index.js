@@ -15,7 +15,7 @@ import bgImagem from '../../drawing/backgroud.jpg'
 import LgImagem from '../../drawing/logo.png'
 import Facebook from '../../drawing/facebook.png'
 import Google from '../../drawing/google.png'
-
+import {NavigationActions, StackActions} from 'react-navigation';
 const { width: WIDTH } = Dimensions.get('window')
 
 export class TelaLogin extends Component {
@@ -24,18 +24,37 @@ export class TelaLogin extends Component {
     super()
     this.state = {
       showPass:  true,
-      press: false
-    }
+      press: false,
+      email: '',
+      senha: '',
 
-    let config = {
-      apiKey: "AIzaSyBijcXzaVp1y2auvOh8_dxH-SNY7Y_o18c",
-      authDomain: "nightly-2d7ea.firebaseapp.com",
-      databaseURL: "https://nightly-2d7ea.firebaseio.com",
-      projectId: "nightly-2d7ea",
-      storageBucket: "nightly-2d7ea.appspot.com",
-      messagingSenderId: "777384956257"
+    }
+    this.logar = this.logar.bind(this)
+
+    var config = {
+      "apiKey": "AIzaSyCHgXFB3jhMI0sCLbQNAHDK-f7UacpSQDk",
+      "authDomain": "nightly-23428.firebaseapp.com",
+      "databaseURL": "https://nightly-23428.firebaseio.com",
+      "projectId": "nightly-23428",
+      "storageBucket": "",
+      "messagingSenderId": "221789084607"
     };
     firebase.initializeApp(config);
+
+    firebase.auth().onAuthStateChanged((user)=>{
+      if(user){
+        this.props.navigation.dispatch(StackActions.reset({
+          index: 0, 
+          actions:[
+            NavigationActions.navigate({routeName: 'Map'})
+          ]
+        }));
+
+      }else{
+        alert('Usuário Deslogado')
+      }
+    })
+
 
   }
 
@@ -46,7 +65,24 @@ export class TelaLogin extends Component {
       this.setState({showPass: true, press: false})
 
     }
+
+
+
   }
+
+
+  logar(){
+    firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.senha)
+    .catch((error)=>{
+      if(error.code == 'auth/wrong-password'){
+        alert('Usuário ou senha Incorreta');
+        
+      }else{
+        alert('Ops, tente novamente.');
+      }
+    })
+  }
+
   render() {
     return (
       <View style={styles.backgrounContainer}>
@@ -62,8 +98,9 @@ export class TelaLogin extends Component {
             placeholder={'Usuário'}
             placeholderTextColor={'rgba(255,255,255,0.9)'}
             underlineColorAndroid='transparent'
+            onChangeText={(email)=>{this.setState({email})}}
           />
-        </View>
+        </View> 
 
         <View style={styles.inputcontainer}>
           <Icon name={'ios-lock'} size={28} color={'(rgba(255, 255,  255,0.9)'}
@@ -74,6 +111,7 @@ export class TelaLogin extends Component {
             secureTextEntry={this.state.showPass}
             placeholderTextColor={'rgba(255,255,255,0.7)'}
             underlineColorAndroid='transparent'
+            onChangeText={(senha)=>{this.setState({senha})}}
           />
 
           <TouchableOpacity style={styles.btneye} onPress={this.showPass.bind(this)}>
@@ -83,8 +121,9 @@ export class TelaLogin extends Component {
 
 
         
-        <TouchableOpacity style={styles.btnLogin}>
-            <Text style={styles.txtEntrar}>Entrar</Text>
+        <TouchableOpacity style={styles.btnLogin}
+        onPress={this.logar}><Text style={styles.txtEntrar}>ENTRAR</Text>
+            
           </TouchableOpacity>
 
           <View style={styles.cadastrar}>
@@ -117,7 +156,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: null,
     height: null,
-    backgroundColor: '#d6d6d6'
+    backgroundColor: '#EDA65A'
   },
 
 
@@ -153,7 +192,7 @@ const styles = StyleSheet.create({
     color: 'rgba(255,255,255,0.7)',
     marginHorizontal: 25,
     borderWidth: 0.6,
-    borderColor: '#4B0082' ,
+    borderColor: '#FFA749' ,
   },
 
   inputcontainer: {
@@ -179,9 +218,10 @@ const styles = StyleSheet.create({
     width: WIDTH - 55,
     height: 49,
     borderRadius: 45,
-    backgroundColor: '#4B0082',
+    backgroundColor: '#FF8402',
     justifyContent:'center',
     marginTop:20,
+    elevation:3
 
   },
 
@@ -189,6 +229,7 @@ const styles = StyleSheet.create({
     color:'rgba(255,255,255,0.7)',
     fontSize: 16,
     textAlign: 'center',
+    fontWeight: '700'
 
   },
 
