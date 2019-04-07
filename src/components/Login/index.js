@@ -9,10 +9,12 @@ import {
   TextInput,
   TouchableOpacity
 } from 'react-native';
+import firebase from 'firebase'
 import Icon from 'react-native-vector-icons/Ionicons';
 import bgImagem from '../../drawing/backgroud.jpg'
 import LgImagem from '../../drawing/logo.png'
-
+import Facebook from '../../drawing/facebook.png'
+import Google from '../../drawing/google.png'
 
 const { width: WIDTH } = Dimensions.get('window')
 
@@ -24,6 +26,17 @@ export class TelaLogin extends Component {
       showPass:  true,
       press: false
     }
+
+    let config = {
+      apiKey: "AIzaSyBijcXzaVp1y2auvOh8_dxH-SNY7Y_o18c",
+      authDomain: "nightly-2d7ea.firebaseapp.com",
+      databaseURL: "https://nightly-2d7ea.firebaseio.com",
+      projectId: "nightly-2d7ea",
+      storageBucket: "nightly-2d7ea.appspot.com",
+      messagingSenderId: "777384956257"
+    };
+    firebase.initializeApp(config);
+
   }
 
   showPass = ()=>{
@@ -42,18 +55,18 @@ export class TelaLogin extends Component {
         </View>
 
         <View style={styles.inputcontainer}>
-          <Icon name={'ios-person'} size={28} color={'(rgba(255, 255,  255,0.7)'}
+          <Icon name={'ios-person'} size={28} color={'(rgba(255, 255,  255,0.9)'}
             style={styles.InputIcon} />
           <TextInput
             style={styles.input}
             placeholder={'Usuário'}
-            placeholderTextColor={'rgba(255,255,255,0.7)'}
+            placeholderTextColor={'rgba(255,255,255,0.9)'}
             underlineColorAndroid='transparent'
           />
         </View>
 
         <View style={styles.inputcontainer}>
-          <Icon name={'ios-lock'} size={28} color={'(rgba(255, 255,  255,0.7)'}
+          <Icon name={'ios-lock'} size={28} color={'(rgba(255, 255,  255,0.9)'}
             style={styles.InputIcon} />
           <TextInput
             style={styles.input}
@@ -73,6 +86,21 @@ export class TelaLogin extends Component {
         <TouchableOpacity style={styles.btnLogin}>
             <Text style={styles.txtEntrar}>Entrar</Text>
           </TouchableOpacity>
+
+          <View style={styles.cadastrar}>
+            <Text style={styles.txtCad}>Já possui conta?</Text>
+            <Text style={styles.txtCad}>Cadastre-se !</Text>
+          </View>
+
+          <View style={styles.containerSocial}>
+          <TouchableOpacity style={styles.social}>
+          <Image source={Facebook} />
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.social}>
+          <Image source={Google} />
+          </TouchableOpacity>
+          </View>
 
 
       </View>
@@ -124,7 +152,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.35)',
     color: 'rgba(255,255,255,0.7)',
     marginHorizontal: 25,
-    borderWidth: 2,
+    borderWidth: 0.6,
     borderColor: '#4B0082' ,
   },
 
@@ -162,7 +190,35 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
 
-  }
+  },
+
+containerSocial:{
+
+  flexDirection:'row',
+  
+  
+},
+
+social:{
+  width:100,
+  height:100,
+  marginTop:10,
+  paddingLeft:15
+  
+},
+
+cadastrar:{
+  flexDirection:'row',
+  marginTop:7,
+  marginBottom: 7,
+  
+},
+
+txtCad:{
+
+  fontSize: 17,
+  marginLeft: 10,
+}
 
 });
 
