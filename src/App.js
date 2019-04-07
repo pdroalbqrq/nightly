@@ -5,14 +5,17 @@ import {
 import {StackNavigator} from 'react-navigation';
 import TelaLogin from '../src/components/Login/index'
 import Map from '../src/components/Map/index'
-import TelaBar from '../src/components/Bar/index'
+import Telabar from '../src/components/Bar/index';
 const Navegador = StackNavigator({
     Login:{ 
         screen: TelaLogin
     },
     Map:{ 
-        screen: Map    
+        screen: Map, 
     },
+    TelaBar:{
+        screen: Telabar
+    }
 
 });
 

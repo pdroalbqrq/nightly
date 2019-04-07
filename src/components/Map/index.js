@@ -3,7 +3,7 @@ import { Platform, StyleSheet, Text, View, Dimensions, ScrollView, Image } from 
 import MapView, { Marker, MapCallout, Callout } from 'react-native-maps';
 import { white, black } from 'ansi-colors';
 import { StackNavigator } from 'react-navigation';
-import Telabar from '../Bar/index';
+import Telabar from '../Bar/index'
 import placesJson from '../../json/placesjson.json';
 
 var customMapStyle = require('../../json/mapstyle2.json');
@@ -13,7 +13,9 @@ const { height, width } = Dimensions.get('window');
 console.disableYellowBox = true;
 
 class Map extends Component {
-
+    static navigationOptions = {
+        title: 'NightlyApp'
+        };
 
 
     constructor(props) {
@@ -123,7 +125,7 @@ class Map extends Component {
                 >
                     {this.state.places.map(place => (
                         <View key={place.id} style={styles.places}
-                            onTouchEnd={(e) => this.props.navigation.navigate('Bar', {
+                            onTouchEnd={(e) => this.props.navigation.navigate('TelaBar', {
                                 id: place.id,
                                 title: place.title,
                                 description: place.description,

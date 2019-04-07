@@ -15,11 +15,13 @@ import bgImagem from '../../drawing/backgroud.jpg'
 import LgImagem from '../../drawing/logo.png'
 import Facebook from '../../drawing/facebook.png'
 import Google from '../../drawing/google.png'
-import {NavigationActions, StackActions} from 'react-navigation';
+import {NavigationActions, StackActions, StackNavigator} from 'react-navigation';
 const { width: WIDTH } = Dimensions.get('window')
 
 export class TelaLogin extends Component {
-  
+  static navigationOptions = {
+    header: null,
+    };
   constructor(){
     super()
     this.state = {
@@ -50,9 +52,10 @@ export class TelaLogin extends Component {
           ]
         }));
 
-      }else{
-        alert('Usuário Deslogado')
       }
+      // else{
+      //   alert('Usuário Deslogado')
+      // }
     })
 
 
@@ -84,7 +87,10 @@ export class TelaLogin extends Component {
   }
 
   render() {
+    
     return (
+
+      
       <View style={styles.backgrounContainer}>
         <View style={styles.logoContainer}>
           <Image source={LgImagem} style={styles.logoimg} />
@@ -226,7 +232,7 @@ const styles = StyleSheet.create({
   },
 
   txtEntrar:{
-    color:'rgba(255,255,255,0.7)',
+    color:'white',
     fontSize: 16,
     textAlign: 'center',
     fontWeight: '700'
@@ -259,6 +265,7 @@ txtCad:{
 
   fontSize: 17,
   marginLeft: 10,
+  color:'white'
 }
 
 });
