@@ -55,9 +55,10 @@ export class TelaLogin extends Component {
           ]
         }));
 
-      }else{
-        alert('Usuário Deslogado')
       }
+      // else{
+      //   alert('Usuário Deslogado')
+      // }
     })
 
 
@@ -89,7 +90,10 @@ export class TelaLogin extends Component {
   }
 
   render() {
+    
     return (
+
+      
       <View style={styles.backgrounContainer}>
         <View style={styles.logoContainer}>
           <Image source={LgImagem} style={styles.logoimg} />
