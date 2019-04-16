@@ -1,18 +1,35 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, Dimensions, ScrollView, Image } from 'react-native';
+import { Platform, StyleSheet, Text, View, Dimensions, ScrollView, Image, TouchableOpacity } from 'react-native';
 import MapView, { Marker, MapCallout, Callout } from 'react-native-maps';
 import { white, black } from 'ansi-colors';
 import { StackNavigator } from 'react-navigation';
 import Telabar from '../Bar/index';
 import placesJson from '../../json/placesjson.json';
 
+
 var customMapStyle = require('../../json/mapstyle2.json');
 
-const { height, width } = Dimensions.get('window');
 
+
+const { height, width } = Dimensions.get('window');
+import avatar from '../../drawing/avatar.png'
 console.disableYellowBox = true;
 
 class Map extends Component {
+    
+    static navigationOptions = ({ navigation }) => ({
+        title: 'Nightly',
+        headerStyle: {
+          backgroundColor: '#2D004C',
+          borderBottomWidth: 1,
+          borderColor: '#E9E0F9',
+          fontSize:25
+        },
+        headerTintColor: '#E9E0F9',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        }
+      })
 
 
 
@@ -23,6 +40,7 @@ class Map extends Component {
 
     }
 
+    
     state = {
         region: null,
         chave: null,
@@ -58,10 +76,17 @@ class Map extends Component {
         const { region } = this.state;
         //   const {} = this.setState.places[0]
         return (
-
+                
             <View style={styles.container}>
-
+           
+           <View style={styles.mapProfile}>     
+           <TouchableOpacity>
+           <Image source={avatar} style={{height:55, width:55}} />
+           </TouchableOpacity>           
+           </View>  
+                
                 <MapView
+                
                     showsPointsOfInterest={false}
                     showsBuildings={false}
                     style={styles.mapView}
@@ -72,6 +97,9 @@ class Map extends Component {
                     ref={el => this.mapView = el}
 
                 >
+                
+
+                
 
                     {this.state.places.map(place => (
                         <Marker
@@ -86,9 +114,9 @@ class Map extends Component {
                           
                         </Marker>
                     ))}
-
+                    
                 </MapView>
-
+                 
                 <ScrollView
 
                     style={styles.placesContainer}
@@ -139,13 +167,13 @@ class Map extends Component {
                                     style={{
                                         width: 80,
                                         height: 80,
-                                        borderRadius: 3,
-                                        borderRadius: 4,
+                                        borderTopLeftRadius: 40,
                                         borderWidth: 1,
-                                        borderColor: '#fff',
+                                        borderColor: '#E9E0F9',
                                     }}
                                 />
                             </View>
+                            
                             <View style={styles.placesinfo}>
                                 <Text style={styles.ptitle}>{place.title}</Text>
                                 <ScrollView
@@ -156,11 +184,15 @@ class Map extends Component {
 
                                     {/* <Text showsHorizontalScrollIndicator style={styles.pdescription}>{place.description}</Text> */}
                                 </ScrollView>
+                               
                             </View>
+                            
                         </View>
                     ))}
                 </ScrollView>
+                
             </View>);
+          
 
     }
 }
@@ -170,7 +202,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'flex-end',
-        alignItems: 'flex-end'
+        alignItems: 'flex-end',
+       
+        
     },
     mapView: {
         flex: 1,
@@ -178,7 +212,18 @@ const styles = StyleSheet.create({
         top: 0,
         right: 0,
         left: 0,
-        bottom: 0
+        bottom: 0,
+   
+    },
+    mapProfile:{
+      width: 55,
+      height: 55,    
+      position:'absolute',
+      top:20,
+      left:35,
+      borderRadius:70,
+      zIndex:1
+
     },
     customCalloutContainer: {
         backgroundColor: '#3C024F',
@@ -192,15 +237,14 @@ const styles = StyleSheet.create({
     },
     places: {
         width: width - 10,
-        backgroundColor: '#3C024F',
+        backgroundColor: '#2D004C',
         marginHorizontal: 5,
         marginBottom: 5,
-        borderRadius: 3,
-        borderWidth: 1,
-        borderColor: '#fff',
-        flexDirection: 'row',
-
         borderRadius: 5,
+        borderTopLeftRadius: 50,
+        borderWidth: 1,
+        borderColor: '#E9E0F9',
+        flexDirection: 'row',
         bottom: 0,
         alignSelf: 'flex-end'
     },
@@ -220,8 +264,9 @@ const styles = StyleSheet.create({
     ptitle: {
         fontSize: 25,
         alignItems: 'center',
-        color: '#fff',
+        color: '#E9E0F9',
         marginHorizontal: 2,
+        fontWeight: 'bold'
     },
 
     pdescription: {

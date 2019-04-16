@@ -13,6 +13,9 @@ const Navegador = StackNavigator({
     Map:{ 
         screen: Map    
     },
+    Bar:{ 
+        screen: TelaBar    
+    },
 
 });
 
