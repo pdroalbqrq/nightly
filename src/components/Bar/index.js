@@ -3,6 +3,7 @@ import { Platform, StyleSheet, Text, View, Dimensions, ScrollView, Image,} from 
 import Icon from 'react-native-vector-icons/Ionicons';
 const { height, width } = Dimensions.get('window');
 const avatarprof = 'https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Bearded_Man-17-512.png'
+
 class Telabar extends Component {
 
   constructor() {

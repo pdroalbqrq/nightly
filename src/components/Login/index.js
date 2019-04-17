@@ -18,7 +18,8 @@ import Google from '../../drawing/google.png'
 import { NavigationActions, StackActions } from 'react-navigation';
 
 
-const { width: WIDTH } = Dimensions.get('window')
+const { width: WIDTH } = Dimensions.get('window');
+var tema = require('../../json/tema.json');
 
 export class TelaLogin extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -166,7 +167,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: null,
     height: null,
-    backgroundColor: '#2D004C'
+    backgroundColor: tema[0].cores.nome.primaria.hexa
   },
   logoContainer: {
     alignItems: 'center',
@@ -189,13 +190,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     paddingLeft: 45,
     backgroundColor: 'transparent',
-    color: 'rgba(255,255,255,0.7)',
+    color: tema[0].cores.nome.primaria.hexa,
     marginHorizontal: 25,
     borderBottomWidth: 0.6,
     borderColor: '#E9E0F9',
   },
   inputAll:{
-    backgroundColor:'#001219',
+    backgroundColor:tema[0].cores.nome.terciaria.hexa,
     alignItems:'center',
     justifyContent: 'center',
     padding: 40,
@@ -214,19 +215,19 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 8,
     right: 37,
-    color: '#E9E0F9'
+    color: tema[0].cores.nome.primaria.hexa
   },
   btnLogin: {
     width: WIDTH - 55,
     height: 49,
     borderRadius: 45,
-    backgroundColor: '#E9E0F9',
+    backgroundColor: tema[0].cores.nome.primaria.hexa,
     justifyContent: 'center',
     marginTop: 20,
     elevation: 3
   },
   txtEntrar: {
-    color: '#2D004C',
+    color: tema[0].cores.nome.terciaria.hexa,
     fontSize: 16,
     textAlign: 'center',
     fontWeight: '700',

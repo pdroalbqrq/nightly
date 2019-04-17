@@ -1,22 +1,25 @@
 [
     {
-        "tema": [
-            {
-                "id": "1",
-                "cores": {
-                    "primaria": "#2D004C",
-                    "secundaria": "#E9E0F9",
-                    "terciaria": "#FFF"
-                }
-            },
-            {
-                "id": "2",
-                "cores": {
-                    "primaria": "#2D004C",
-                    "secundaria": "#E9E0F9",
-                    "terciaria": "#FFF"
+        "id": 1,
+        "title": "Roxo",
+        "cores": {
+            "nome": {
+                "primaria": {
+                    "id": 1,
+                    "nome": "roxa",
+                    "hexa": "#2D004C"
+                },
+                "secundaria": {
+                    "id": 1,
+                    "nome": "roxa",
+                    "hexa": "#E9E0F9"
+                },
+                "terciaria": {
+                    "id": 1,
+                    "nome": "roxa",
+                    "hexa": "#FFF"
                 }
             }
-        ]
+        }
     }
 ]

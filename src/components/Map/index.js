@@ -8,7 +8,7 @@ import placesJson from '../../json/placesjson.json';
 
 
 var customMapStyle = require('../../json/mapstyle2.json');
-
+var tema = require('../../json/tema.json');
 
 
 const { height, width } = Dimensions.get('window');
@@ -16,6 +16,12 @@ import avatar from '../../drawing/avatar.png'
 console.disableYellowBox = true;
 
 class Map extends Component {
+       
+    state = {
+        region: null,
+        chave: null,
+        places: placesJson
+    }
     
     static navigationOptions = ({ navigation }) => ({
         title: 'Nightly',
@@ -40,14 +46,7 @@ class Map extends Component {
 
     }
 
-    
-    state = {
-        region: null,
-        chave: null,
-        places: placesJson
-
-
-    }
+ 
 
     async componentDidMount() {
         navigator.geolocation.getCurrentPosition(
@@ -151,7 +150,7 @@ class Map extends Component {
                 >
                     {this.state.places.map(place => (
                         <View key={place.id} style={styles.places}
-                            onTouchEnd={(e) => this.props.navigation.navigate('Bar', {
+                            onTouchEnd={(e) => this.props.navigation.navigate('TelaBar', {
                                 id: place.id,
                                 title: place.title,
                                 description: place.description,
@@ -225,11 +224,6 @@ const styles = StyleSheet.create({
       zIndex:1
 
     },
-    customCalloutContainer: {
-        backgroundColor: '#3C024F',
-        maxHeight:20,
-        width: width-50
-    },
     placesContainer: {
         width: '100%',
         maxHeight: 200,
@@ -237,13 +231,13 @@ const styles = StyleSheet.create({
     },
     places: {
         width: width - 10,
-        backgroundColor: '#2D004C',
+        backgroundColor: tema[0].cores.nome.primaria.hexa,
         marginHorizontal: 5,
         marginBottom: 5,
         borderRadius: 5,
         borderTopLeftRadius: 50,
         borderWidth: 1,
-        borderColor: '#E9E0F9',
+        borderColor: tema[0].cores.nome.secundaria.hexa,
         flexDirection: 'row',
         bottom: 0,
         alignSelf: 'flex-end'
@@ -264,7 +258,7 @@ const styles = StyleSheet.create({
     ptitle: {
         fontSize: 25,
         alignItems: 'center',
-        color: '#E9E0F9',
+        color: tema[0].cores.nome.secundaria.hexa,
         marginHorizontal: 2,
         fontWeight: 'bold'
     },
@@ -272,7 +266,7 @@ const styles = StyleSheet.create({
     pdescription: {
         fontSize: 13,
         alignItems: 'center',
-        color: '#fff',
+        color: tema[0].cores.nome.terciaria.hexa,
         marginRight: 10
     }
 
