@@ -4,28 +4,24 @@ import Icon from 'react-native-vector-icons/Ionicons';
 const { height, width } = Dimensions.get('window');
 const avatarprof = 'https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Bearded_Man-17-512.png'
 
+var tema = require('../../json/tema.json');
+
+var corPrimaria = tema[1].cores.nome.primaria.hexa;
+var corSecundaria = tema[1].cores.nome.secundaria.hexa;
+var corTerciaria = tema[1].cores.nome.terciaria.hexa;
+
+
 class Telabar extends Component {
 
   constructor() {
     super()
     this.state = {
       press: false,
-
     }
   }
   static navigationOptions = ({ navigation }) => ({
     title: null,
-   
-    headerStyle: {
-      backgroundColor: 'transparent',
-      borderBottomWidth: 1,
-      borderColor: '#E9E0F9',
-      fontSize: 25
-    },
     headerTintColor: '#E9E0F9',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
     headerTransparent: true
   })
 
@@ -79,13 +75,14 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'flex-start',
+    backgroundColor: corSecundaria
     
   },
 avatarperf:{
   position:'absolute',
   top:115,
-  borderWidth:4,
-  borderColor:'#fff',
+  borderWidth:5,
+  borderColor:corSecundaria,
   borderRadius:150,
   alignItems:'center'
 },

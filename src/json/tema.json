@@ -6,18 +6,41 @@
             "nome": {
                 "primaria": {
                     "id": 1,
-                    "nome": "roxa",
+                    "nome": "roxa forte",
                     "hexa": "#2D004C"
                 },
                 "secundaria": {
                     "id": 1,
-                    "nome": "roxa",
+                    "nome": "roxa escura",
                     "hexa": "#E9E0F9"
                 },
                 "terciaria": {
                     "id": 1,
-                    "nome": "roxa",
+                    "nome": "branco",
                     "hexa": "#FFF"
+                }
+            }
+        }
+    },
+    {
+        "id": 2,
+        "title": "Dourada",
+        "cores": {
+            "nome": {
+                "primaria": {
+                    "id": 1,
+                    "nome": "dourada escura",
+                    "hexa": "#894904"
+                },
+                "secundaria": {
+                    "id": 1,
+                    "nome": "dourada forte",
+                    "hexa": "#FF8402"
+                },
+                "terciaria": {
+                    "id": 1,
+                    "nome": "dourada clara",
+                    "hexa": "#EDA65A"
                 }
             }
         }

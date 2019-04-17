@@ -19,7 +19,12 @@ import { NavigationActions, StackActions } from 'react-navigation';
 
 
 const { width: WIDTH } = Dimensions.get('window');
+
 var tema = require('../../json/tema.json');
+
+var corPrimaria = tema[1].cores.nome.primaria.hexa;
+var corSecundaria = tema[1].cores.nome.secundaria.hexa;
+var corTerciaria = tema[1].cores.nome.terciaria.hexa;
 
 export class TelaLogin extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -167,7 +172,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: null,
     height: null,
-    backgroundColor: tema[0].cores.nome.primaria.hexa
+    backgroundColor: corPrimaria
   },
   logoContainer: {
     alignItems: 'center',
@@ -190,13 +195,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     paddingLeft: 45,
     backgroundColor: 'transparent',
-    color: tema[0].cores.nome.primaria.hexa,
+    color: corPrimaria,
     marginHorizontal: 25,
     borderBottomWidth: 0.6,
     borderColor: '#E9E0F9',
   },
   inputAll:{
-    backgroundColor:tema[0].cores.nome.terciaria.hexa,
+    backgroundColor:  corSecundaria,
     alignItems:'center',
     justifyContent: 'center',
     padding: 40,
@@ -215,19 +220,19 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 8,
     right: 37,
-    color: tema[0].cores.nome.primaria.hexa
+    color: corPrimaria
   },
   btnLogin: {
     width: WIDTH - 55,
     height: 49,
     borderRadius: 45,
-    backgroundColor: tema[0].cores.nome.primaria.hexa,
+    backgroundColor: corPrimaria,
     justifyContent: 'center',
     marginTop: 20,
     elevation: 3
   },
   txtEntrar: {
-    color: tema[0].cores.nome.terciaria.hexa,
+    color: corTerciaria,
     fontSize: 16,
     textAlign: 'center',
     fontWeight: '700',

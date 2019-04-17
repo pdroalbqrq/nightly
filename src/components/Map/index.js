@@ -7,8 +7,12 @@ import Telabar from '../Bar/index';
 import placesJson from '../../json/placesjson.json';
 
 
-var customMapStyle = require('../../json/mapstyle2.json');
+var customMapStyle = require('../../json/mapstyle.json');
 var tema = require('../../json/tema.json');
+
+var corPrimaria = tema[1].cores.nome.primaria.hexa;
+var corSecundaria = tema[1].cores.nome.secundaria.hexa;
+var corTerciaria = tema[1].cores.nome.terciaria.hexa;
 
 
 const { height, width } = Dimensions.get('window');
@@ -26,12 +30,12 @@ class Map extends Component {
     static navigationOptions = ({ navigation }) => ({
         title: 'Nightly',
         headerStyle: {
-          backgroundColor: '#2D004C',
+          backgroundColor: corPrimaria,
           borderBottomWidth: 1,
-          borderColor: '#E9E0F9',
+          borderColor: corSecundaria,
           fontSize:25
         },
-        headerTintColor: '#E9E0F9',
+        headerTintColor: corSecundaria,
         headerTitleStyle: {
           fontWeight: 'bold',
         }
@@ -231,13 +235,13 @@ const styles = StyleSheet.create({
     },
     places: {
         width: width - 10,
-        backgroundColor: tema[0].cores.nome.primaria.hexa,
+        backgroundColor: corPrimaria,
         marginHorizontal: 5,
         marginBottom: 5,
         borderRadius: 5,
         borderTopLeftRadius: 50,
         borderWidth: 1,
-        borderColor: tema[0].cores.nome.secundaria.hexa,
+        borderColor: corSecundaria,
         flexDirection: 'row',
         bottom: 0,
         alignSelf: 'flex-end'
@@ -258,7 +262,7 @@ const styles = StyleSheet.create({
     ptitle: {
         fontSize: 25,
         alignItems: 'center',
-        color: tema[0].cores.nome.secundaria.hexa,
+        color: corSecundaria,
         marginHorizontal: 2,
         fontWeight: 'bold'
     },
@@ -266,7 +270,7 @@ const styles = StyleSheet.create({
     pdescription: {
         fontSize: 13,
         alignItems: 'center',
-        color: tema[0].cores.nome.terciaria.hexa,
+        color: corTerciaria,
         marginRight: 10
     }
 
