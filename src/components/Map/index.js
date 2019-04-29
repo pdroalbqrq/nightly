@@ -35,7 +35,7 @@ class Map extends Component {
           borderColor: corSecundaria,
           fontSize:25
         },
-        headerTintColor: corSecundaria,
+        headerTintColor: corTerciaria,
         headerTitleStyle: {
           fontWeight: 'bold',
         }
@@ -170,7 +170,7 @@ class Map extends Component {
                                     style={{
                                         width: 80,
                                         height: 80,
-                                        borderTopLeftRadius: 40,
+                                        borderTopLeftRadius: 10,
                                         borderWidth: 1,
                                         borderColor: '#E9E0F9',
                                     }}
@@ -238,8 +238,9 @@ const styles = StyleSheet.create({
         backgroundColor: corPrimaria,
         marginHorizontal: 5,
         marginBottom: 5,
-        borderRadius: 5,
-        borderTopLeftRadius: 50,
+        borderRadius: 0,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
         borderWidth: 1,
         borderColor: corSecundaria,
         flexDirection: 'row',
@@ -262,7 +263,7 @@ const styles = StyleSheet.create({
     ptitle: {
         fontSize: 25,
         alignItems: 'center',
-        color: corSecundaria,
+        color: corTerciaria,
         marginHorizontal: 2,
         fontWeight: 'bold'
     },
@@ -273,10 +274,6 @@ const styles = StyleSheet.create({
         color: corTerciaria,
         marginRight: 10
     }
-
-
-
-
 
 });
 

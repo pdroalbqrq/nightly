@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Platform, StyleSheet, Text, View, Dimensions, ScrollView, Image,} from 'react-native';
+import { Platform, StyleSheet, Text, View, Dimensions, ScrollView, Image, } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 const { height, width } = Dimensions.get('window');
 const avatarprof = 'https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Bearded_Man-17-512.png'
@@ -36,33 +36,41 @@ class Telabar extends Component {
           style={{
             width: width,
             height: 200,
-            
+
           }}
         />
-        <View style={styles.avatarperf}>
-        <Image source={{uri: avatarprof}} style={{width:150, height:150, margin:-2 }}/>
+        <View style={styles.avatarContainer}>
+          <View style={styles.avatarperf}>
+            <Image source={{ uri: avatarprof }} style={{ width: 150, height: 150, margin: -2 }} />
+          </View>
         </View>
-       <View style={styles.minfo}>
-          
-          <View style={styles.mView}>
-          <Text style={styles.txtQnt}>0.0</Text>
-            <Text style={styles.txtDesc}>Curtidas</Text>
+
+        <View style={styles.minfo}>
+          <View style={styles.mInfoInside}>
+
+            <View style={styles.mView}>
+              <Text style={styles.txtQnt}>10 mil</Text>
+              <Text style={styles.txtDesc}>Curtidas</Text>
+            </View>
+
+            <View style={styles.mView}>
+              <Text style={styles.txtQnt}>4.8</Text>
+              <Text style={styles.txtDesc}>Avaliação</Text>
+            </View>
+
+
+            <View style={styles.mView}>
+              <Text style={styles.txtQnt}>100 mil</Text>
+              <Text style={styles.txtDesc}>Views</Text>
+            </View>
+
+
           </View>
+        </View>
 
-          <View style={styles.mView}>
-          <Text style={styles.txtQnt}>0.0</Text>
-            <Text style={styles.txtDesc}>Avaliação</Text>
-          </View>
+        <View style={styles.teste}> 
 
-
-          <View style={styles.mView}>
-          <Text style={styles.txtQnt}>0.0</Text>
-            <Text style={styles.txtDesc}>Views</Text>
-          </View>
-
-
-       </View>
-
+        </View>
 
 
       </View>
@@ -73,41 +81,48 @@ class Telabar extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    backgroundColor: corSecundaria
-    
+    backgroundColor: corPrimaria
+
   },
-avatarperf:{
-  position:'absolute',
-  top:115,
-  borderWidth:5,
-  borderColor:corSecundaria,
-  borderRadius:150,
-  alignItems:'center'
-},
+  teste:{
+    flex:1,
+  },
+  avatarContainer:{
+    alignItems: 'center'
+  },
+  avatarperf: {
+    position: 'absolute',
+    top:-80,
+    borderWidth: 5,
+    borderColor: corPrimaria,
+    borderRadius: 150,
+    alignItems: 'center'
+  },
 
-minfo:{
-flexDirection:'row',
-marginTop:60,
+  minfo: {
+    top: 100,
+    alignItems: 'flex-start',
+  },
+  mInfoInside: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
 
-},  
+  txtDesc: {
 
+    color: corTerciaria,
+    fontSize: 20
+  },
+  txtQnt: {
+    color: corTerciaria,
+    fontSize: 15
+  },
 
-txtDesc: {
+  mView: {
+    alignItems: 'center',
 
-
-fontSize: 20
-},
-txtQnt:{
-
-fontSize: 15
-},
-
-mView:{
-alignItems:'center',
-
-}
+  }
 
 });
 

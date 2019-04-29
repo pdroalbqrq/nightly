@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "title": "Roxo",
+        "title": "Roxo(Dimitri)",
         "cores": {
             "nome": {
                 "primaria": {
@@ -24,7 +24,7 @@
     },
     {
         "id": 2,
-        "title": "Dourada",
+        "title": "Dourada(Helio)",
         "cores": {
             "nome": {
                 "primaria": {
@@ -39,8 +39,8 @@
                 },
                 "terciaria": {
                     "id": 1,
-                    "nome": "dourada clara",
-                    "hexa": "#EDA65A"
+                    "nome": "branco",
+                    "hexa": "#FFF"
                 }
             }
         }
